@@ -26,5 +26,23 @@ function getRepoContributors(repoOwner, repoName, cb){
 getRepoContributors("jquery", "jquery", function(err, result) {
   result.forEach(function(user){
     console.log(user.avatar_url);
+
   })
 });
+
+
+function downloadImageByURL(url, filePath) {
+  var request = require('request');
+  var fs = require('fs');
+
+  request.get(url)
+         .on('error', function (err){
+          console.log(err);
+          })
+         .on('response', function (response) {
+          console.log('Response Status Code: ', response.statusCode);
+          })
+         .pipe(fs.createWriteStream(filePath));
+    }
+
+
