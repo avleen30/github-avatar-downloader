@@ -25,10 +25,11 @@ function getRepoContributors(repoOwner, repoName, cb){
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   result.forEach(function(user){
-    console.log(user.avatar_url);
-
-  })
+    user.avatar_url;
+    downloadImageByURL(user.avatar_url, 'avatars/' + user.login + ".jpg")
+    })
 });
+
 
 
 function downloadImageByURL(url, filePath) {
